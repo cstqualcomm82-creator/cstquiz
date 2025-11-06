@@ -61,7 +61,13 @@ let startTimestamp = 0;
 window.addEventListener('DOMContentLoaded', loadTopPerformers);
 
 // Event Listeners
-startQuizBtn.addEventListener('click', startQuiz);
+console.log('Setting up event listeners');
+if (startQuizBtn) {
+    startQuizBtn.addEventListener('click', startQuiz);
+    console.log('Start Quiz button listener added');
+} else {
+    console.error('Start Quiz button not found in the DOM');
+}
 nextQuestionBtn.addEventListener('click', handleNextQuestion);
 submitQuizBtn.addEventListener('click', submitQuiz);
 viewLeaderboardBtn.addEventListener('click', showLeaderboard);
@@ -143,31 +149,51 @@ function loadTopPerformers() {
 }
 
 function startQuiz() {
+    console.log('startQuiz function called');
+    
+    if (!nameInput) {
+        console.error('Name input element not found');
+        return;
+    }
+    
     const name = nameInput.value.trim();
+    console.log('Name entered:', name);
     
     if (!name) {
         loginError.textContent = "Please enter your name.";
         return;
     }
     
+    console.log('Checking if user has already taken the quiz...');
     // Check if user has already taken the quiz
     database.ref('leaderboard').orderByChild('name').equalTo(name).once('value')
         .then(snapshot => {
+            console.log('Firebase response received');
             if (snapshot.exists()) {
+                console.log('User already exists in leaderboard');
                 loginError.textContent = "You have already taken this quiz.";
                 return;
             }
             
+            console.log('User has not taken the quiz yet, proceeding...');
             // User hasn't taken the quiz yet, proceed
             currentUser = {
                 name: name
             };
             
             // Select 10 random questions from the pool
+            console.log('Selecting random questions...');
+            if (!quizQuestions || !Array.isArray(quizQuestions)) {
+                console.error('quizQuestions is not defined or not an array:', quizQuestions);
+                loginError.textContent = "An error occurred loading questions. Please try again.";
+                return;
+            }
+            
             selectedQuestions = getRandomQuestions(quizQuestions, 10);
             currentQuestionIndex = 0;
             userAnswers = Array(10).fill(null);
             
+            console.log('Showing quiz section...');
             // Show quiz section and hide login section
             loginSection.classList.add('hidden');
             quizSection.classList.remove('hidden');
@@ -180,6 +206,7 @@ function startQuiz() {
             
             // Load the first question
             loadQuestion();
+            console.log('Quiz started successfully');
         })
         .catch(error => {
             console.error("Error checking user:", error);
