@@ -137,21 +137,19 @@
     <script src="/questions.js"></script>
     <script src="/bubbles.js"></script>
     <script>
-        // Check if all required scripts are loaded
-        window.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM fully loaded');
-            if (typeof firebase === 'undefined') {
-                console.error('Firebase is not loaded');
-            } else {
-                console.log('Firebase is loaded');
-            }
-            
-            if (typeof quizQuestions === 'undefined') {
-                console.error('Quiz questions are not loaded');
-            } else {
-                console.log('Quiz questions are loaded:', quizQuestions.length);
-            }
-        });
+        // This script block ensures Firebase and questions are loaded before app.js
+        console.log('Checking dependencies...');
+        if (typeof firebase === 'undefined') {
+            console.error('Firebase is not loaded');
+        } else {
+            console.log('Firebase is loaded');
+        }
+        
+        if (typeof quizQuestions === 'undefined') {
+            console.error('Quiz questions are not loaded');
+        } else {
+            console.log('Quiz questions are loaded:', quizQuestions.length);
+        }
     </script>
     <script src="/app.js"></script>
 </body>

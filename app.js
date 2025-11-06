@@ -14,37 +14,85 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
-// DOM Elements
-const loginSection = document.getElementById('login-section');
-const quizSection = document.getElementById('quiz-section');
-const resultsSection = document.getElementById('results-section');
-const leaderboardSection = document.getElementById('leaderboard-section');
+// DOM Elements - We'll initialize these after the DOM is fully loaded
+let loginSection;
+let quizSection;
+let resultsSection;
+let leaderboardSection;
+let nameInput;
+let startQuizBtn;
+let loginError;
+let userNameSpan;
+let quizTimer;
+let questionNumber;
+let questionText;
+let optionsContainer;
+let nextQuestionBtn;
+let submitQuizBtn;
+let resultName;
+let resultScore;
+let resultTime;
+let viewLeaderboardBtn;
+let viewLeaderboardResultsBtn;
+let backToLoginBtn;
+let backToLoginResultsBtn;
+let answerReviewContainer;
+let topPerformersList;
+let leaderboardBody;
 
-const nameInput = document.getElementById('name');
-// Employee ID field removed
-const startQuizBtn = document.getElementById('start-quiz');
-const loginError = document.getElementById('login-error');
+// Initialize DOM elements after the page is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Initializing DOM elements');
+    loginSection = document.getElementById('login-section');
+    quizSection = document.getElementById('quiz-section');
+    resultsSection = document.getElementById('results-section');
+    leaderboardSection = document.getElementById('leaderboard-section');
 
-const userNameSpan = document.getElementById('user-name');
-const quizTimer = document.getElementById('quiz-timer');
-const questionNumber = document.getElementById('question-number');
-const questionText = document.getElementById('question-text');
-const optionsContainer = document.getElementById('options-container');
-const nextQuestionBtn = document.getElementById('next-question');
-const submitQuizBtn = document.getElementById('submit-quiz');
+    nameInput = document.getElementById('name');
+    startQuizBtn = document.getElementById('start-quiz');
+    loginError = document.getElementById('login-error');
 
-const resultName = document.getElementById('result-name');
-// Result ID field removed
-const resultScore = document.getElementById('result-score');
-const resultTime = document.getElementById('result-time');
+    userNameSpan = document.getElementById('user-name');
+    quizTimer = document.getElementById('quiz-timer');
+    questionNumber = document.getElementById('question-number');
+    questionText = document.getElementById('question-text');
+    optionsContainer = document.getElementById('options-container');
+    nextQuestionBtn = document.getElementById('next-question');
+    submitQuizBtn = document.getElementById('submit-quiz');
 
-const viewLeaderboardBtn = document.getElementById('view-leaderboard');
-const viewLeaderboardResultsBtn = document.getElementById('view-leaderboard-results');
-const backToLoginBtn = document.getElementById('back-to-login');
-const backToLoginResultsBtn = document.getElementById('back-to-login-results');
-const answerReviewContainer = document.getElementById('answer-review-container');
-const topPerformersList = document.getElementById('top-performers');
-const leaderboardBody = document.getElementById('leaderboard-body');
+    resultName = document.getElementById('result-name');
+    resultScore = document.getElementById('result-score');
+    resultTime = document.getElementById('result-time');
+
+    viewLeaderboardBtn = document.getElementById('view-leaderboard');
+    viewLeaderboardResultsBtn = document.getElementById('view-leaderboard-results');
+    backToLoginBtn = document.getElementById('back-to-login');
+    backToLoginResultsBtn = document.getElementById('back-to-login-results');
+    answerReviewContainer = document.getElementById('answer-review-container');
+    topPerformersList = document.getElementById('top-performers');
+    leaderboardBody = document.getElementById('leaderboard-body');
+    
+    // Set up event listeners after DOM elements are initialized
+    console.log('Setting up event listeners');
+    if (startQuizBtn) {
+        startQuizBtn.addEventListener('click', startQuiz);
+        console.log('Start Quiz button listener added');
+    } else {
+        console.error('Start Quiz button not found in the DOM');
+    }
+    
+    if (nextQuestionBtn) nextQuestionBtn.addEventListener('click', handleNextQuestion);
+    if (submitQuizBtn) submitQuizBtn.addEventListener('click', submitQuiz);
+    if (viewLeaderboardBtn) viewLeaderboardBtn.addEventListener('click', showLeaderboard);
+    if (viewLeaderboardResultsBtn) viewLeaderboardResultsBtn.addEventListener('click', showLeaderboard);
+    if (backToLoginBtn) backToLoginBtn.addEventListener('click', goBackToLogin);
+    if (backToLoginResultsBtn) backToLoginResultsBtn.addEventListener('click', goBackToLogin);
+    
+    // Load top performers after DOM is ready
+    loadTopPerformers();
+});
+
+// DOM elements are now initialized in the DOMContentLoaded event handler
 
 // Quiz variables
 let currentUser = null;
@@ -57,23 +105,7 @@ let timerInterval = null;
 let seconds = 0;
 let startTimestamp = 0;
 
-// Load top performers on page load
-window.addEventListener('DOMContentLoaded', loadTopPerformers);
-
-// Event Listeners
-console.log('Setting up event listeners');
-if (startQuizBtn) {
-    startQuizBtn.addEventListener('click', startQuiz);
-    console.log('Start Quiz button listener added');
-} else {
-    console.error('Start Quiz button not found in the DOM');
-}
-nextQuestionBtn.addEventListener('click', handleNextQuestion);
-submitQuizBtn.addEventListener('click', submitQuiz);
-viewLeaderboardBtn.addEventListener('click', showLeaderboard);
-viewLeaderboardResultsBtn.addEventListener('click', showLeaderboard);
-backToLoginBtn.addEventListener('click', goBackToLogin);
-backToLoginResultsBtn.addEventListener('click', goBackToLogin);
+// Event listeners are now set up in the DOMContentLoaded event handler
 
 // Functions
 function loadTopPerformers() {
