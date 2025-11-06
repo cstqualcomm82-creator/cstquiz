@@ -238,16 +238,6 @@ const quizQuestions = [
         correctAnswer: "Casqade"
     },
     {
-        question: "What tool is used for integrate component labels to SI?",
-        options: [
-            "Casqade",
-            "PCM",
-            "ARIS",
-            "Package Warehouse"
-        ],
-        correctAnswer: "ARIS"
-    },
-    {
         question: "What is the correct flow of FW Code check-in?",
         options: [
             "Lookahead -> Devpool -> Promotion",
@@ -256,5 +246,15 @@ const quizQuestions = [
             "Promotion -> Devpool -> Lookahead"
         ],
         correctAnswer: "Lookahead -> Devpool -> Promotion"
+    },
+    {
+        question: "What tool is used for integrate component labels to SI?",
+        options: [
+            "Casqade",
+            "PCM",
+            "ARIS",
+            "Package Warehouse"
+        ],
+        correctAnswer: "ARIS"
     }
 ];
