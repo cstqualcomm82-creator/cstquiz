@@ -21,7 +21,7 @@ const resultsSection = document.getElementById('results-section');
 const leaderboardSection = document.getElementById('leaderboard-section');
 
 const nameInput = document.getElementById('name');
-const employeeIdInput = document.getElementById('employee-id');
+// Employee ID field removed
 const startQuizBtn = document.getElementById('start-quiz');
 const loginError = document.getElementById('login-error');
 
@@ -34,7 +34,7 @@ const nextQuestionBtn = document.getElementById('next-question');
 const submitQuizBtn = document.getElementById('submit-quiz');
 
 const resultName = document.getElementById('result-name');
-const resultId = document.getElementById('result-id');
+// Result ID field removed
 const resultScore = document.getElementById('result-score');
 const resultTime = document.getElementById('result-time');
 
@@ -141,15 +141,14 @@ function loadTopPerformers() {
 
 function startQuiz() {
     const name = nameInput.value.trim();
-    const employeeId = employeeIdInput.value.trim();
     
-    if (!name || !employeeId) {
-        loginError.textContent = "Please enter both name and employee ID.";
+    if (!name) {
+        loginError.textContent = "Please enter your name.";
         return;
     }
     
     // Check if user has already taken the quiz
-    database.ref('leaderboard').orderByChild('employeeId').equalTo(employeeId).once('value')
+    database.ref('leaderboard').orderByChild('name').equalTo(name).once('value')
         .then(snapshot => {
             if (snapshot.exists()) {
                 loginError.textContent = "You have already taken this quiz.";
@@ -158,8 +157,7 @@ function startQuiz() {
             
             // User hasn't taken the quiz yet, proceed
             currentUser = {
-                name: name,
-                employeeId: employeeId
+                name: name
             };
             
             // Select 10 random questions from the pool
@@ -290,7 +288,6 @@ function submitQuiz() {
     // Save results to Firebase
     const quizResult = {
         name: currentUser.name,
-        employeeId: currentUser.employeeId,
         score: score,
         timeTaken: timeTaken,
         timestamp: firebase.database.ServerValue.TIMESTAMP
@@ -304,7 +301,6 @@ function submitQuiz() {
             
             // Update results information
             resultName.textContent = currentUser.name;
-            resultId.textContent = currentUser.employeeId;
             resultScore.textContent = score;
             resultTime.textContent = formatTime(timeTaken);
             
@@ -375,7 +371,6 @@ function showLeaderboard() {
 function goBackToLogin() {
     // Reset form fields
     nameInput.value = '';
-    employeeIdInput.value = '';
     loginError.textContent = '';
     
     // Hide all sections except login
