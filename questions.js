@@ -1,153 +1,260 @@
-// Array of 30 connectivity system testing questions with options
 const quizQuestions = [
     {
-        question: "Which protocol operates at the Transport layer of the OSI model?",
-        options: ["HTTP", "TCP", "IP", "Ethernet"],
-        correctAnswer: "TCP"
+        question: "What is the primary purpose of the Component Model in Qualcomm’s integration workflow?",
+        options: [
+            "To merge all code into one monolithic branch",
+            "To modularize development by isolating components for independent build, test, and release",
+            "To replace Gerrit with GitHub",
+            "To automate JIRA ticket creation"
+        ],
+        correctAnswer: "To modularize development by isolating components for independent build, test, and release"
     },
     {
-        question: "What is the default subnet mask for a Class C network?",
-        options: ["255.0.0.0", "255.255.0.0", "255.255.255.0", "255.255.255.255"],
-        correctAnswer: "255.255.255.0"
+        question: "Which dashboard in Jarvis displays SU tags and component tag differences?",
+        options: [
+            "Build Status Dashboard",
+            "Component Dashboard",
+            "Release Tracker",
+            "Gerrit Review Board"
+        ],
+        correctAnswer: "Component Dashboard"
     },
     {
-        question: "Which command is used to test connectivity to another network device?",
-        options: ["ipconfig", "tracert", "ping", "netstat"],
-        correctAnswer: "ping"
+        question: "What does “SU” stand for in the context of component model builds?",
+        options: [
+            "System Update",
+            "Sanity Update",
+            "Software Upgrade",
+            "Sync Utility"
+        ],
+        correctAnswer: "Sanity Update"
     },
     {
-        question: "What does DHCP stand for?",
-        options: ["Dynamic Host Configuration Protocol", "Domain Host Control Program", "Digital Host Control Protocol", "Dynamic Host Control Program"],
-        correctAnswer: "Dynamic Host Configuration Protocol"
+        question: "Which gate in the component model checks per-Gerrit compilation before merge?",
+        options: [
+            "Preflight gate",
+            "Lookahead gate",
+            "Postflight gate",
+            "Integration gate"
+        ],
+        correctAnswer: "Lookahead gate"
     },
     {
-        question: "Which of the following is not a private IP address range?",
-        options: ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "192.0.2.0/24"],
-        correctAnswer: "192.0.2.0/24"
+        question: "In Component Model 2.0, what does “+2 CR” signify in Gerrit workflow?",
+        options: [
+            "Two commits merged",
+            "Code Review approval by tech approvers",
+            "Two reviewers assigned",
+            "Critical Release tag applied"
+        ],
+        correctAnswer: "Code Review approval by tech approvers"
     },
     {
-        question: "What is the maximum transmission unit (MTU) size for standard Ethernet?",
-        options: ["1500 bytes", "1000 bytes", "576 bytes", "9000 bytes"],
-        correctAnswer: "1500 bytes"
+        question: "What is the role of AU sync in component model automation?",
+        options: [
+            "To archive unused tags",
+            "To consume latest changes from other components into the current component manifest",
+            "To trigger PF testing",
+            "To delete old manifests"
+        ],
+        correctAnswer: "To consume latest changes from other components into the current component manifest"
     },
     {
-        question: "Which protocol is used to automatically assign IP addresses to devices on a network?",
-        options: ["DNS", "DHCP", "SMTP", "FTP"],
-        correctAnswer: "DHCP"
+        question: "In CM 2.0, what does “Preflight” validate?",
+        options: [
+            "Tag promotion readiness",
+            "Bulk Gerrit compilation and merge readiness",
+            "AU sync status",
+            "JIRA ticket closure"
+        ],
+        correctAnswer: "Bulk Gerrit compilation and merge readiness"
     },
     {
-        question: "What does NAT stand for in networking?",
-        options: ["Network Address Translation", "Network Access Terminal", "Network Authentication Technology", "Native Address Transfer"],
-        correctAnswer: "Network Address Translation"
+        question: "What automation metric improves due to Jarvis-driven auto-promotion of SU tags?",
+        options: [
+            "Code coverage",
+            "Reduction in manual intervention and faster tag promotion cycle",
+            "Increased AU frequency",
+            "Gerrit review time"
+        ],
+        correctAnswer: "Reduction in manual intervention and faster tag promotion cycle"
     },
     {
-        question: "Which layer of the OSI model is responsible for routing and forwarding?",
-        options: ["Data Link Layer", "Network Layer", "Transport Layer", "Session Layer"],
-        correctAnswer: "Network Layer"
+        question: "Which workflow kicks in after Preflight failure in CM 2.0?",
+        options: [
+            "AU Sync Workflow",
+            "Triage Workflow",
+            "Tag Promotion Workflow",
+            "PF Retry Workflow"
+        ],
+        correctAnswer: "Triage Workflow"
     },
     {
-        question: "Which protocol is used to resolve IP addresses to MAC addresses?",
-        options: ["DNS", "ARP", "DHCP", "ICMP"],
-        correctAnswer: "ARP"
+        question: "What is the significance of “PF Tag Generation” in component release testing?",
+        options: [
+            "It skips mandatory tests",
+            "It ensures baseline + component changes pass mandatory and tech-specific tests before release",
+            "It only validates AU sync",
+            "It triggers JIRA ticket closure"
+        ],
+        correctAnswer: "It ensures baseline + component changes pass mandatory and tech-specific tests before release"
     },
     {
-        question: "What is the port number for HTTPS?",
-        options: ["80", "443", "22", "25"],
-        correctAnswer: "443"
+        question: "Which one of below is not applicable for Release branch manifest.",
+        options: ["LA", "PF", "Devpool", "All"],
+        correctAnswer: "Devpool"
     },
     {
-        question: "Which command shows the routing table on a Windows system?",
-        options: ["route print", "show route", "netstat -r", "Both A and C"],
-        correctAnswer: "Both A and C"
+        question: "Which one of these is mandatory for Lookahead to start.",
+        options: ["Code review+1", "Code review+2", "Developer-Verified+1", "windevpool+1"],
+        correctAnswer: "Developer-Verified+1"
     },
     {
-        question: "What is the purpose of a subnet mask?",
-        options: ["To identify the network portion of an IP address", "To encrypt network traffic", "To block unwanted traffic", "To increase network speed"],
-        correctAnswer: "To identify the network portion of an IP address"
+        question: "Can we deliver ST on EOLed program?",
+        options: ["Yes", "No"],
+        correctAnswer: "Yes"
     },
     {
-        question: "Which of the following is a link-state routing protocol?",
-        options: ["RIP", "OSPF", "BGP", "EIGRP"],
-        correctAnswer: "OSPF"
+        question: "What you mean by source history shipment.",
+        options: [
+            "Ship NHLOS source with history format",
+            "Ship HLOS source with history format",
+            "Ship HLOS binary with history format",
+            "Ship NHLOS binary with history format"
+        ],
+        correctAnswer: "Ship HLOS source with history format"
     },
     {
-        question: "What is the purpose of DNS in networking?",
-        options: ["To assign IP addresses", "To resolve domain names to IP addresses", "To secure network connections", "To route network traffic"],
-        correctAnswer: "To resolve domain names to IP addresses"
+        question: "Can we deliver ST with Source history enabled?",
+        options: ["Yes", "No"],
+        correctAnswer: "No"
     },
     {
-        question: "Which protocol is used for secure shell connections?",
-        options: ["Telnet", "FTP", "SSH", "HTTP"],
-        correctAnswer: "SSH"
+        question: "Which of the following is applicable for Mainline change.",
+        options: ["Mainline source check", "Devpool", "PE voting", "None of the above"],
+        correctAnswer: "Devpool"
     },
     {
-        question: "What is the default gateway in a network?",
-        options: ["The router that connects to the internet", "The DNS server", "The DHCP server", "The main switch"],
-        correctAnswer: "The router that connects to the internet"
+        question: "Which of the following combo is not correct.",
+        options: ["HK-Pine", "CYP-PINE", "HK-WKK", "ALD-WKK"],
+        correctAnswer: "HK-WKK"
     },
     {
-        question: "Which command is used to display all current TCP/IP network configuration values?",
-        options: ["ping", "ipconfig /all", "netstat", "tracert"],
-        correctAnswer: "ipconfig /all"
+        question: "Which of the Radio supported for HK,CYP,ALD,MPL.",
+        options: ["WKK", "Spruce", "Pine", "None"],
+        correctAnswer: "Pine"
     },
     {
-        question: "What is the purpose of a firewall in a network?",
-        options: ["To boost network speed", "To filter network traffic based on security rules", "To assign IP addresses", "To connect multiple networks"],
-        correctAnswer: "To filter network traffic based on security rules"
+        question: "What is the primary goal of Wi-Fi sanity testing?",
+        options: [
+            "To perform deep packet inspection",
+            "To validate basic Wi-Fi functionality after a change",
+            "To test all features of the Wi-Fi system",
+            "To perform security audits"
+        ],
+        correctAnswer: "To validate basic Wi-Fi functionality after a change"
     },
     {
-        question: "Which of the following is not a valid IPv4 address?",
-        options: ["192.168.1.1", "256.0.0.1", "10.0.0.1", "172.16.0.1"],
-        correctAnswer: "256.0.0.1"
+        question: "Which tool is commonly used to test Wi-Fi throughput during sanity testing?",
+        options: ["Selenium", "iperf", "Postman", "Chariot"],
+        correctAnswer: "iperf"
     },
     {
-        question: "What does TTL stand for in networking?",
-        options: ["Time To Live", "Transfer Type Layer", "Total Traffic Load", "Transmission Time Limit"],
-        correctAnswer: "Time To Live"
+        question: "What is the primary purpose of Helix Perforce in software development?",
+        options: [
+            "To manage distributed builds",
+            "To provide version control for large-scale codebases",
+            "To automate CI/CD pipelines",
+            "To replace code review tools"
+        ],
+        correctAnswer: "To provide version control for large-scale codebases"
     },
     {
-        question: "Which command would you use to trace the route to a destination?",
-        options: ["ping", "tracert", "netstat", "ipconfig"],
-        correctAnswer: "tracert"
+        question: "Which feature of Swarm is used for collaborative code reviews?",
+        options: [
+            "Shelving",
+            "Changelists",
+            "Review Workflow",
+            "Branch Mapping"
+        ],
+        correctAnswer: "Review Workflow"
     },
     {
-        question: "What is the purpose of VLAN in a network?",
-        options: ["To increase network speed", "To segment a network into multiple broadcast domains", "To connect to the internet", "To assign IP addresses"],
-        correctAnswer: "To segment a network into multiple broadcast domains"
+        question: "In Helix Perforce, what is a 'changelist'?",
+        options: [
+            "A list of users who made changes",
+            "A set of file revisions grouped for submission",
+            "A branch created for testing",
+            "A review comment thread"
+        ],
+        correctAnswer: "A set of file revisions grouped for submission"
     },
     {
-        question: "Which of the following is used to connect different networks with different protocols?",
-        options: ["Hub", "Switch", "Router", "Gateway"],
-        correctAnswer: "Gateway"
+        question: "Which command in Perforce is used to sync your workspace to the latest depot version?",
+        options: [
+            "p4 submit",
+            "p4 sync",
+            "p4 edit",
+            "p4 revert"
+        ],
+        correctAnswer: "p4 sync"
     },
     {
-        question: "What is the IPv6 loopback address?",
-        options: ["127.0.0.1", "::1", "0.0.0.0", "fe80::"],
-        correctAnswer: "::1"
+        question: "What does Swarm provide in addition to code review?",
+        options: [
+            "Automated build execution",
+            "Continuous integration",
+            "Activity streams and collaboration tools",
+            "Binary artifact storage"
+        ],
+        correctAnswer: "Activity streams and collaboration tools"
     },
     {
-        question: "Which protocol is used for transferring files between a client and server?",
-        options: ["HTTP", "SMTP", "FTP", "SNMP"],
-        correctAnswer: "FTP"
+        question: "What does Qualcomm's internal software bug tracking and change management tool?",
+        options: [
+            "Orbit",
+            "Casqade",
+            "ARIS",
+            "JIRA"
+        ],
+        correctAnswer: "Orbit"
     },
     {
-        question: "What is the purpose of a proxy server?",
-        options: ["To assign IP addresses", "To act as an intermediary between clients and servers", "To connect multiple networks", "To increase network speed"],
-        correctAnswer: "To act as an intermediary between clients and servers"
+        question: "Is Lookahead and Devpool required for release branch check-in?",
+        options: [
+            "Yes",
+            "No",
+        ],
+        correctAnswer: "No"
     },
     {
-        question: "Which network device operates at the Data Link layer?",
-        options: ["Router", "Switch", "Firewall", "Load Balancer"],
-        correctAnswer: "Switch"
+        question: "What tool is used for propogating change from mainline to release branch?",
+        options: [
+            "Casqade",
+            "PCM",
+            "FindIt",
+            "Perforce"
+        ],
+        correctAnswer: "Casqade"
     },
     {
-        question: "What is the purpose of STP (Spanning Tree Protocol)?",
-        options: ["To prevent routing loops", "To prevent switching loops", "To encrypt network traffic", "To assign IP addresses"],
-        correctAnswer: "To prevent switching loops"
+        question: "What tool is used for integrate component labels to SI?",
+        options: [
+            "Casqade",
+            "PCM",
+            "ARIS",
+            "Package Warehouse"
+        ],
+        correctAnswer: "ARIS"
     },
     {
-        question: "Which of the following is a connectionless protocol?",
-        options: ["TCP", "UDP", "HTTP", "FTP"],
-        correctAnswer: "UDP"
+        question: "What is the correct flow of FW Code check-in?",
+        options: [
+            "Lookahead -> Devpool -> Promotion",
+            "Lookahead -> Promotion-> Devpool",
+            "Devpool -> Promotion-> Lookahead",
+            "Promotion -> Devpool -> Lookahead"
+        ],
+        correctAnswer: "Lookahead -> Devpool -> Promotion"
     }
 ];

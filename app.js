@@ -41,6 +41,8 @@ const resultTime = document.getElementById('result-time');
 const viewLeaderboardBtn = document.getElementById('view-leaderboard');
 const viewLeaderboardResultsBtn = document.getElementById('view-leaderboard-results');
 const backToLoginBtn = document.getElementById('back-to-login');
+const backToLoginResultsBtn = document.getElementById('back-to-login-results');
+const answerReviewContainer = document.getElementById('answer-review-container');
 const topPerformersList = document.getElementById('top-performers');
 const leaderboardBody = document.getElementById('leaderboard-body');
 
@@ -65,6 +67,7 @@ submitQuizBtn.addEventListener('click', submitQuiz);
 viewLeaderboardBtn.addEventListener('click', showLeaderboard);
 viewLeaderboardResultsBtn.addEventListener('click', showLeaderboard);
 backToLoginBtn.addEventListener('click', goBackToLogin);
+backToLoginResultsBtn.addEventListener('click', goBackToLogin);
 
 // Functions
 function loadTopPerformers() {
@@ -304,6 +307,9 @@ function submitQuiz() {
             resultScore.textContent = score;
             resultTime.textContent = formatTime(timeTaken);
             
+            // Display answer review
+            displayAnswerReview();
+            
             // Reload top performers
             loadTopPerformers();
         })
@@ -311,6 +317,42 @@ function submitQuiz() {
             console.error("Error saving results:", error);
             alert("An error occurred while saving your results. Please try again.");
         });
+}
+
+// Function to display answer review
+function displayAnswerReview() {
+    // Clear previous content
+    answerReviewContainer.innerHTML = '';
+    
+    // Create review items for each question
+    selectedQuestions.forEach((question, index) => {
+        const reviewItem = document.createElement('div');
+        reviewItem.classList.add('review-item');
+        
+        // Question number and text
+        const questionElement = document.createElement('div');
+        questionElement.classList.add('review-question');
+        questionElement.innerHTML = `<strong>Question ${index + 1}:</strong> ${question.question}`;
+        reviewItem.appendChild(questionElement);
+        
+        // User's answer
+        const userAnswerElement = document.createElement('div');
+        userAnswerElement.classList.add('review-answer');
+        const isCorrect = userAnswers[index] === question.correctAnswer;
+        userAnswerElement.innerHTML = `<strong>Your Answer:</strong> <span class="${isCorrect ? 'correct-answer' : 'wrong-answer'}">${userAnswers[index]}</span>`;
+        reviewItem.appendChild(userAnswerElement);
+        
+        // Correct answer (only show if user's answer is wrong)
+        if (!isCorrect) {
+            const correctAnswerElement = document.createElement('div');
+            correctAnswerElement.classList.add('review-correct-answer');
+            correctAnswerElement.innerHTML = `<strong>Correct Answer:</strong> <span class="correct-answer">${question.correctAnswer}</span>`;
+            reviewItem.appendChild(correctAnswerElement);
+        }
+        
+        // Add review item to container
+        answerReviewContainer.appendChild(reviewItem);
+    });
 }
 
 function showLeaderboard() {
