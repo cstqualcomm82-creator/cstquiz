@@ -213,7 +213,7 @@ function startQuiz() {
                 name: name
             };
             
-            // Select 10 random questions from the pool
+            // Select 10 random questions from the pool (5 from each set)
             console.log('Selecting random questions...');
             if (!quizQuestions || !Array.isArray(quizQuestions)) {
                 console.error('quizQuestions is not defined or not an array:', quizQuestions);
@@ -221,6 +221,7 @@ function startQuiz() {
                 return;
             }
             
+            // Use the updated getRandomQuestions function to get questions from both sets
             selectedQuestions = getRandomQuestions(quizQuestions, 10);
             currentQuestionIndex = 0;
             userAnswers = Array(10).fill(null);
@@ -247,8 +248,22 @@ function startQuiz() {
 }
 
 function getRandomQuestions(questions, count) {
-    const shuffled = [...questions].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, count);
+    // For backward compatibility
+    if (!Array.isArray(quizQuestions_cst) || quizQuestions_cst.length === 0) {
+        const shuffled = [...questions].sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, count);
+    }
+    
+    // Get 5 questions from each set
+    const shuffledMain = [...quizQuestions].sort(() => 0.5 - Math.random());
+    const shuffledCst = [...quizQuestions_cst].sort(() => 0.5 - Math.random());
+    
+    // Take 5 from each and combine
+    const mainQuestions = shuffledMain.slice(0, 5);
+    const cstQuestions = shuffledCst.slice(0, 5);
+    
+    // Combine and shuffle again to mix the questions
+    return [...mainQuestions, ...cstQuestions].sort(() => 0.5 - Math.random());
 }
 
 function startTimer() {
