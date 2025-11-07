@@ -666,6 +666,177 @@ const quizQuestions_cst = [
       "Unit, Integration, System"
     ],
     correctAnswer: "Alpha, Beta, Gamma"
+  },
+  {
+    question: "In 802.11ax (Wi‑Fi 6), which feature primarily improves multi-user efficiency on the uplink and downlink?",
+    options: [
+      "DL/UL MU‑MIMO with explicit beamforming",
+      "Spatial reuse using BSS Coloring and OBSS_PD",
+      "OFDMA with RU scheduling and UL trigger-based access",
+      "Short GI with HE preamble optimizations"
+    ],
+    correctAnswer: "OFDMA with RU scheduling and UL trigger-based access"
+  },
+  {
+    question: "In multi-client performance, what is the best initial comparison to isolate Wi‑Fi MAC/PHY behavior?",
+    options: [
+      "Cabled setup with clients of identical capability, firmware, and driver",
+      "OTA in anechoic test space with roaming disabled and fixed placements",
+      "Cabled setup with heterogeneous clients but normalized traffic rate caps",
+      "OTA in a shielded room using identical client models at matched RSSI"
+    ],
+    correctAnswer: "Cabled setup with clients of identical capability, firmware, and driver"
+  },
+  {
+    question: "For small-packet UDP tests, what bottleneck often dominates?",
+    options: [
+      "Elevated contention/backoff due to more frequent medium access",
+      "Long GI selection increasing PHY overhead per frame",
+      "RTS/CTS control overhead on short frames",
+      "Host/CPU limits and reduced AMSDU/AMPDU aggregation efficiency"
+    ],
+    correctAnswer: "Host/CPU limits and reduced AMSDU/AMPDU aggregation efficiency"
+  },
+  {
+    question: "iMIX traffic profiles are primarily used to:",
+    options: [
+      "Measure stability under realistic mixed packet-size distributions",
+      "Verify hidden-node protection with controlled RTS thresholds",
+      "Validate DSCP policy/QoS mapping stability under mixed flows",
+      "Stress deep-buffer behavior by suppressing aggregation"
+    ],
+    correctAnswer: "Measure stability under realistic mixed packet-size distributions"
+  },
+  {
+    question: "For gaming-oriented performance validation, which metric is most critical beyond raw throughput?",
+    options: [
+      "DTIM tuning to minimize multicast delivery delays",
+      "Low steady-state PER and minimal packet reordering",
+      "Consistently low latency with tight jitter under load",
+      "Aligned beacon intervals to avoid PS drift"
+    ],
+    correctAnswer: "Consistently low latency with tight jitter under load"
+  },
+  {
+    question: "Which configuration most improves MAC efficiency at high rates?",
+    options: [
+      "Use long GI to improve decoding robustness at the top MCS",
+      "Prefer AMPDU-only with smaller AMSDUs to limit retransmission cost",
+      "Enable selective RTS/CTS to protect long TxOPs",
+      "Increase AMSDU/AMPDU sizes within PER/latency limits"
+    ],
+    correctAnswer: "Increase AMSDU/AMPDU sizes within PER/latency limits"
+  },
+  {
+    question: "A performance dip coinciding with shorter PPDU durations generally points to:",
+    options: [
+      "High RSSI causing rate control to favor more, shorter frames",
+      "Reduced aggregation depth and posting/scheduler latency oscillations",
+      "EDCA parameter drift that reduces TxOP length at high load",
+      "Padding inefficiency from AMSDU alignment at larger MSS"
+    ],
+    correctAnswer: "Reduced aggregation depth and posting/scheduler latency oscillations"
+  },
+  {
+    question: "In interference scenarios, enabling RTS/CTS often:",
+    options: [
+      "Adds protection overhead that can reduce peak throughput in clean conditions",
+      "Forces APs to favor SU transmissions over MU scheduling",
+      "Improves MU sounding reliability, increasing top MCS selection",
+      "Increases PHY rate by stabilizing channel estimation"
+    ],
+    correctAnswer: "Adds protection overhead that can reduce peak throughput in clean conditions"
+  },
+  {
+    question: "A rise in CCA busy during testing typically indicates:",
+    options: [
+      "DFS radar activity resulting in CAC restarts mid-run",
+      "AP beacon suppression leading to unbalanced airtime",
+      "Increased own TX airtime from larger AMPDU bursts only",
+      "The medium sensed busy due to co/adjacent-channel traffic or interferers"
+    ],
+    correctAnswer: "The medium sensed busy due to co/adjacent-channel traffic or interferers"
+  },
+  {
+    question: "If UDP UL is good but TCP DL underperforms, which first debug step is advisable?",
+    options: [
+      "Narrow BW to 20/40 MHz for better SNR headroom",
+      "Adjust MSS/TSO/GRO settings to change segmentation behavior",
+      "Check sniffer for loss/dup ACKs and tune TCP windows/queueing",
+      "Disable client power save (U-APSD/BMPS) to reduce latency variance"
+    ],
+    correctAnswer: "Check sniffer for loss/dup ACKs and tune TCP windows/queueing"
+  },
+  {
+    question: "A high PER at top MCS with otherwise good RSSI often implies:",
+    options: [
+      "Collision/interference or overly aggressive rate control at high MCS",
+      "Periodic key rotation (rekey) during sustained data",
+      "RTS/CTS disabled regardless of traffic mix",
+      "Regulatory domain power limits reducing EIRP at the AP"
+    ],
+    correctAnswer: "Collision/interference or overly aggressive rate control at high MCS"
+  },
+  {
+    question: "In DL MU‑MIMO performance, “low MU percentage” typically means:",
+    options: [
+      "Clients lack PMF capability, blocking MU operation in HE",
+      "MU always underperforms SU at moderate RSSI values",
+      "DFS CAC requirements prevent MU transmissions on DFS channels",
+      "AP is rarely scheduling MU, limiting expected MU throughput gains"
+    ],
+    correctAnswer: "AP is rarely scheduling MU, limiting expected MU throughput gains"
+  },
+  {
+    question: "Which condition can cause MU‑MIMO to underperform vs SU?",
+    options: [
+      "Uniformly low PER across grouped users",
+      "Poor grouping/low channel orthogonality and padding inefficiency",
+      "Large AMSDU sizes increasing PPDU duration",
+      "High CSI accuracy with orthogonal user channels"
+    ],
+    correctAnswer: "Poor grouping/low channel orthogonality and padding inefficiency"
+  },
+  {
+    question: "For UL multi-client UDP scaling without RTS/CTS, what issue commonly appears?",
+    options: [
+      "Improved EVM due to lower average duty cycle per STA",
+      "ACK compression that reduces MAC overhead over time",
+      "Rising collision rate that limits throughput scaling at higher STA counts",
+      "PER trending to zero as TxOPs shorten"
+    ],
+    correctAnswer: "Rising collision rate that limits throughput scaling at higher STA counts"
+  },
+  {
+    question: "In OFDMA tests, reducing RU size for many users generally:",
+    options: [
+      "Decreases per-user rate, while fairness across many users can improve",
+      "Forces AP to revert to SU mode outside trigger frames",
+      "Increases per-user PHY rate as RU size shrinks",
+      "Disables AMPDU aggregation for HE data frames"
+    ],
+    correctAnswer: "Decreases per-user rate, while fairness across many users can improve"
+  },
+  {
+    question: "During interference A/B runs, which comparative observation most strengthens root-cause analysis?",
+    options: [
+      "Peak throughput comparison at matched RSSI points only",
+      "Beacon rate and DTIM interval comparison over the run",
+      "Per-MCS airtime distribution without timeline correlation",
+      "Time-series throughput aligned with CCA busy and retry/CRC trends"
+    ],
+    correctAnswer: "Time-series throughput aligned with CCA busy and retry/CRC trends"
+  },
+  {
+    question: "When small-packet throughput is low but large-packet throughput is fine, which fix helps first?",
+    options: [
+      "Reduce channel bandwidth to 20 MHz for stronger SNR margins",
+      "Tune host/queue thresholds and aggregation to better pack small frames",
+      "Increase BA window size while reducing AMSDU to minimum",
+      "Force long GI to stabilize decoding on short payloads"
+    ],
+    correctAnswer: "Tune host/queue thresholds and aggregation to better pack small frames"
   }
 ];
+
 
