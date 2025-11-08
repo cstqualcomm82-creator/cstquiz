@@ -34,6 +34,8 @@ let resultScore;
 let resultTime;
 let viewLeaderboardBtn;
 let viewLeaderboardResultsBtn;
+let viewTop5LeaderboardBtn;
+let viewTop5LeaderboardResultsBtn;
 let backToLoginBtn;
 let backToLoginResultsBtn;
 let answerReviewContainer;
@@ -66,6 +68,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     viewLeaderboardBtn = document.getElementById('view-leaderboard');
     viewLeaderboardResultsBtn = document.getElementById('view-leaderboard-results');
+    viewTop5LeaderboardBtn = document.getElementById('view-top5-leaderboard');
+    viewTop5LeaderboardResultsBtn = document.getElementById('view-top5-leaderboard-results');
     backToLoginBtn = document.getElementById('back-to-login');
     backToLoginResultsBtn = document.getElementById('back-to-login-results');
     answerReviewContainer = document.getElementById('answer-review-container');
@@ -85,6 +89,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (submitQuizBtn) submitQuizBtn.addEventListener('click', submitQuiz);
     if (viewLeaderboardBtn) viewLeaderboardBtn.addEventListener('click', showLeaderboard);
     if (viewLeaderboardResultsBtn) viewLeaderboardResultsBtn.addEventListener('click', showLeaderboard);
+    if (viewTop5LeaderboardBtn) viewTop5LeaderboardBtn.addEventListener('click', showTop5Leaderboard);
+    if (viewTop5LeaderboardResultsBtn) viewTop5LeaderboardResultsBtn.addEventListener('click', showTop5Leaderboard);
     if (backToLoginBtn) backToLoginBtn.addEventListener('click', goBackToLogin);
     if (backToLoginResultsBtn) backToLoginResultsBtn.addEventListener('click', goBackToLogin);
     
@@ -497,4 +503,9 @@ function goBackToLogin() {
     
     // Reload top performers
     loadTopPerformers();
+}
+
+// Function to navigate to the Top 5 Leaderboard page
+function showTop5Leaderboard() {
+    window.location.href = 'leaderboard.html';
 }

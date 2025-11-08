@@ -499,6 +499,10 @@ h3::after {
     margin: 0 auto;
 }
 
+.results-buttons .btn {
+    width: 100%;
+}
+
 /* Leaderboard Section */
 #leaderboard-table {
     width: 100%;
