@@ -855,8 +855,7 @@ const quizQuestions_cst = [
       "Purple Mesh provides carrier-grade features like advanced security and VLAN support, while EasyMesh and SON offer only basic security.",
       "SON is fully standards-compliant under Wi-Fi Alliance r6, similar to Purple Mesh."
     ],
-    correctAnswer: "Purple Mesh provides carrier-grade features like advanced security and VLAN support, while EasyMesh and SON offer only basic security",
-    explanation: "Purple Mesh supports advanced security and VLAN features for carrier/enterprise use cases, while EasyMesh and SON have only basic security. Multi-Link Backhaul is exclusive to Purple Mesh, and SON is proprietary (not Wi-Fi Alliance r6 compliant)."
+    correctAnswer: "Purple Mesh provides carrier-grade features like advanced security and VLAN support, while EasyMesh and SON offer only basic security"
   },
   {
     question: "Which combination of standards is commonly used for optimized roaming and steering?",
