@@ -836,7 +836,110 @@ const quizQuestions_cst = [
       "Force long GI to stabilize decoding on short payloads"
     ],
     correctAnswer: "Tune host/queue thresholds and aggregation to better pack small frames"
+  },
+  {
+    question: "In an EasyMesh-enabled network, the VBSS feature aims to minimize client roaming time. What is the target roaming duration and maximum packet loss allowed for VBSS roaming?",
+    options: [
+      "50 ms and 50 packets",
+      "10 ms and 10 packets",
+      "100 ms and 5 packets",
+      "20 ms and 20 packets"
+    ],
+    correctAnswer: "10 ms and 10 packets"
+  },
+  {
+    question: "Which of the following statements correctly differentiates Purple Mesh from EasyMesh and SON?",
+    options: [
+      "Purple Mesh and SON both support Multi-Link Backhaul, while EasyMesh does not.",
+      "EasyMesh offers advanced algorithmic steering, whereas Purple Mesh provides only basic steering.",
+      "Purple Mesh provides carrier-grade features like advanced security and VLAN support, while EasyMesh and SON offer only basic security.",
+      "SON is fully standards-compliant under Wi-Fi Alliance r6, similar to Purple Mesh."
+    ],
+    correctAnswer: "Purple Mesh provides carrier-grade features like advanced security and VLAN support, while EasyMesh and SON offer only basic security",
+    explanation: "Purple Mesh supports advanced security and VLAN features for carrier/enterprise use cases, while EasyMesh and SON have only basic security. Multi-Link Backhaul is exclusive to Purple Mesh, and SON is proprietary (not Wi-Fi Alliance r6 compliant)."
+  },
+  {
+    question: "Which combination of standards is commonly used for optimized roaming and steering?",
+    options: [
+      "802.11k + 802.11v + 802.11r",
+      "802.11a + 802.11b + 802.11g",
+      "802.11ax + WPA2",
+      "802.11e + 802.11h"
+    ],
+    correctAnswer: "802.11k + 802.11v + 802.11r"
+  },
+  {
+    question: "What does IPA create to enable communication between the modem subsystem and the interchip interface?",
+    options: [
+      "Software stack",
+      "Direct hardware path",
+      "Virtual tunnel",
+      "Encryption layer"
+    ],
+    correctAnswer: "Direct hardware path"
+  },
+  {
+    question: "Which hardware accelerator offering is primarily used in Qualcomm mobile LTE environments?",
+    options: [
+      "DSP (Digital Signal Processor)",
+      "GPU (Graphics Processing Unit)",
+      "IPA (Internet Protocol Accelerator)",
+      "NPU (Neural Processing Unit)"
+    ],
+    correctAnswer: "IPA (Internet Protocol Accelerator)"
+  },
+  {
+    question: "In RDK-B, what protocol is commonly used for remote device management?",
+    options: [
+      "HTTP",
+      "TR-143",
+      "TR-069",
+      "TR-189"
+    ],
+    correctAnswer: "TR-069"
+  },
+  {
+    question: "During active IFLI operations, STC can process up to:",
+    options: [
+      "5 classifications/hour",
+      "12 classifications/minute",
+      "120 classifications/minute",
+      "1000 classifications/second"
+    ],
+    correctAnswer: "12 classifications/minute"
+  },
+  {
+    question: "Which sequence correctly represents channel selection coordination in EasyMesh?",
+    options: [
+      "Channel Selection Request → Channel Preference Report → Operating Channel Report",
+      "Channel Preference Query → Channel Preference Report → Channel Selection Request → Channel Selection Response",
+      "AP Capability Query → Channel Selection Response → Channel Preference Report",
+      "Channel Scan Request → Client Steering Request → Channel Selection Response"
+    ],
+    correctAnswer: "Channel Preference Query → Channel Preference Report → Channel Selection Request → Channel Selection Response"
+  },
+  {
+    question: "What is a key limitation of traditional traffic classification methods like SAWF?",
+    options: [
+      "They are too expensive to implement",
+      "They rely on static rules and port-based identification",
+      "They cannot adapt to modern encrypted and dynamic traffic",
+      "They use AI for classification"
+    ],
+    correctAnswer: "They rely on static rules and port-based identification"
+  },
+  {
+    question: "In EasyMesh, upon DFS radar detection, what is the immediate action taken by a wireless backhaul node?",
+    options: [
+      "Do nothing and wait for Controller commands",
+      "Issue an upstream Channel Switch Announcement (CSA) from the backhaul STA and then report via Channel Preference Report and CAC Status TLVs",
+      "Permanently disable all fronthaul BSSIDs",
+      "Send deauthentication frames to all connected clients"
+    ],
+    correctAnswer: "Issue an upstream Channel Switch Announcement (CSA) from the backhaul STA and then report via Channel Preference Report and CAC Status TLVs",
+    explanation: "In EM, when DFS radar is detected, the backhaul STA proactively issues an upstream CSA to maintain connectivity and then updates the controller with channel preference and CAC status, ensuring compliance and minimal service disruption."
   }
 ];
+
 
 
